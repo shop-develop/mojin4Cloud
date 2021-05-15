@@ -1,0 +1,212 @@
+# 魔金微服务多商户商城
+
+### 我的微信号
+
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0109/175604_b339f32e_134431.jpeg "流逝.jpeg")
+
+
+## 魔金微服务版本
+
+魔金微服务版本 暂时只有单商户，请下载体验，解压后 跟目录下有文档 魔金微服务多商户商城部署.docx
+链接: https://pan.baidu.com/s/1p0-wMLA38Nsnh3_Td3IuRA 提取码: 9tq6 复制这段内容后打开百度网盘手机App，操作更方便哦
+## 平台简介
+
+魔金是一套全部开源的商城快速开发平台。
+
+* 采用前后端分离的模式，微服务版本前端(基于 [RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue))。
+* 后端采用Spring Boot、Spring Cloud & Alibaba。
+* 注册中心、配置中心选型Nacos，权限认证使用Redis。
+* 流量控制框架选型Sentinel，分布式事务选型Seata。
+* 如需不分离应用，请移步 [RuoYi](https://gitee.com/y_project/RuoYi)，如需分离应用，请移步 [RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue)
+
+## 系统模块
+
+~~~
+com.ruoyi     
+├── ruoyi-ui              // 前端框架 [80]
+├── ruoyi-gateway         // 网关模块 [8080]
+├── ruoyi-auth            // 认证中心 [9200]
+├── ruoyi-api             // 接口模块
+│       └── ruoyi-api-system                          // 系统接口
+├── ruoyi-common          // 通用模块
+│       └── ruoyi-common-core                         // 核心模块
+│       └── ruoyi-common-datascope                    // 权限范围
+│       └── ruoyi-common-datasource                   // 多数据源
+│       └── ruoyi-common-log                          // 日志记录
+│       └── ruoyi-common-redis                        // 缓存服务
+│       └── ruoyi-common-security                     // 安全模块
+│       └── ruoyi-common-swagger                      // 系统接口
+├── ruoyi-modules         // 业务模块
+│       └── ruoyi-system                              // 系统模块 [9201]
+│       └── ruoyi-gen                                 // 代码生成 [9202]
+│       └── ruoyi-job                                 // 定时任务 [9203]
+│       └── ruoyi-file                                // 文件服务 [9300]
+│       └── ruoyi-marketing                           // 营销服务 [9204]
+│       └── ruoyi-order                               // 订单服务 [9205]
+│       └── ruoyi-member                              // 会员服务 [9206]
+│       └── ruoyi-goods                               // 商品服务 [9207]
+│       └── ruoyi-cms                                 // 内容服务 [9208]
+├── ruoyi-visual          // 图形化管理模块
+│       └── ruoyi-visual-monitor                      // 监控中心 [9100]
+├──pom.xml                // 公共依赖
+~~~
+
+## 架构图
+
+<img src="https://oscimg.oschina.net/oscnet/up-82e9722ecb846786405a904bafcf19f73f3.png"/>
+
+## 内置功能
+## 系统模块
+1.  用户管理：用户是系统操作者，该功能主要完成系统用户配置。
+2.  部门管理：配置系统组织机构（公司、部门、小组），树结构展现支持数据权限。
+3.  岗位管理：配置系统用户所属担任职务。
+4.  菜单管理：配置系统菜单，操作权限，按钮权限标识等。
+5.  角色管理：角色菜单权限分配、设置角色按机构进行数据范围权限划分。
+6.  字典管理：对系统中经常使用的一些较为固定的数据进行维护。
+7.  参数管理：对系统动态配置常用参数。
+8.  通知公告：系统通知公告信息发布维护。
+9.  操作日志：系统正常操作日志记录和查询；系统异常信息日志记录和查询。
+10. 登录日志：系统登录日志记录查询包含登录异常。
+11. 在线用户：当前系统中活跃用户状态监控。
+12. 定时任务：在线（添加、修改、删除)任务调度包含执行结果日志。
+13. 代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
+14. 系统接口：根据业务代码自动生成相关的api接口文档。
+15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
+16. 在线构建器：拖动表单元素生成相应的HTML代码。
+17. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
+
+## 会员模块
+1.首先配置运营管理-商城配置-基本设置
+2.配置运营管理-商城配置-oss设置（支持minio和oss，其他的待测试）
+3.Minio为自建云存储免费开源【https://docs.min.io/cn/】，oss为阿里云云存储 需要去购买后或者ak和sk
+4.配置运营管理-商城配置-支付设置
+微信小程序登陆需要配置微信小程序支付的appid和appsecrect，小程序可以个人去申请
+H5微信登陆为在微信中打开网页中可以微信登陆，需要配置微信支付中的微信（公众号 h5）支付，其他支付需要相应的申请
+5.其他配置稍微看看应该懂了
+6.会员管理
+7.会员等级管理
+8.佣金提现 分销会员关系
+9.店铺相关功能（单商户暂时用不到）
+
+
+## 商品模块
+1.商品配置-添加品牌
+2.商品配置-规格管理
+3.商品配置-商品属性
+4.商品配置-商品分类（三级分类会关联规格和属性）
+5.商品配置-服务支持
+6.商品管理-添加商品 需要选择三级分类，带出规格和属性 完成商品的添加，商品修改中规格只能添加已有的规格，不然会破坏商品（可以添加一个商品复制功能）
+7.佣金设置 商品默认为非分销商品，可以设置商品的一级和二级佣金比例，当分享用户端时，新用户点开并注册，分享者成为一级分销者，新注册用户分享，其他用户点开并注册，我成为最用户的二级分销者，
+
+## 订单模块
+1.订单管理-订单列表展示 （详情和发货）
+2.订单管理-退款退单（用户端申请退款或者退款退货的数据，需要审核，发放按钮会真正退款，微信需要配置退款证书，支付配置中）
+3.积分商城-分类管理
+4.积分商城-商品类别（类似无规格商品）
+5.积分商城-积分设置
+6.积分商城-订单列表（无退款和售后相关功能）
+7.物流模板
+8.收货地址
+9.佣金设置-分销订单
+
+## 营销管理
+1.促销设置-促销分类 各自营销方式分类
+2.促销设置-促销设置 本来为各种促销方式添加图片，暂时没有用到
+4.店铺促销-注册送券 用户端注册的时候可以送积分和优惠券
+5.店铺促销-优惠券管理 平台优惠券
+6.商品促销 -拼团促销 类似拼多多 拼团
+7.商品促销 -满减促销 满多少减多少
+8.商品促销 -满折促销 商品满多少打多少折
+9.商品促销 -满赠促销 购买某个商品送某个商品
+10.直降促销 购买此商品直降多少
+11.商品促销 -秒杀促销，达到某个时间段，出现优惠价格的商品
+12.配置运营管理-首页配置-轮播广告 图片和视频展示 用户端首页展示（也可以配置首页广告）
+13.配置运营管理-首页配置-直播列表 为小程序首页展示用，后台也只是展示；可以在小程序后台申请直播，然后关注一个小程序关注直播，文档看看就知道了
+14.配置运营管理-首页配置-推荐商品 首页展示的推荐商品
+15.配置运营管理-首页配置-热门商品 可配置首页热门商品
+16.配置运营管理-首页配置-推荐品牌可以配置首页推荐品牌
+17.小程序统计 定时任务每天获取昨天小程序的访问记录等信息，后期可做图表统计
+
+## 内容模块
+1.文章管理和分类-后期可以做一些商城业务相关的文章展示（用户端-设置-文章列表）
+2.帮助中心和分类 帮助文档相关内容（用户端-设置-站点帮助）
+
+
+## 演示图
+
+<table>
+    <tr>
+        <td><img src="https://oscimg.oschina.net/oscnet/cd1f90be5f2684f4560c9519c0f2a232ee8.jpg"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/1cbcf0e6f257c7d3a063c0e3f2ff989e4b3.jpg"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-8074972883b5ba0622e13246738ebba237a.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-9f88719cdfca9af2e58b352a20e23d43b12.png"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-39bf2584ec3a529b0d5a3b70d15c9b37646.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-4148b24f58660a9dc347761e4cf6162f28f.png"/></td>
+    </tr>
+	<tr>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-b2d62ceb95d2dd9b3fbe157bb70d26001e9.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-d67451d308b7a79ad6819723396f7c3d77a.png"/></td>
+    </tr>	 
+    <tr>
+        <td><img src="https://oscimg.oschina.net/oscnet/5e8c387724954459291aafd5eb52b456f53.jpg"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/644e78da53c2e92a95dfda4f76e6d117c4b.jpg"/></td>
+    </tr>
+	<tr>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-8370a0d02977eebf6dbf854c8450293c937.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-49003ed83f60f633e7153609a53a2b644f7.png"/></td>
+    </tr>
+	<tr>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-d4fe726319ece268d4746602c39cffc0621.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-c195234bbcd30be6927f037a6755e6ab69c.png"/></td>
+    </tr>
+	<tr>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-ece3fd37a3d4bb75a3926e905a3c5629055.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-92ffb7f3835855cff100fa0f754a6be0d99.png"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-ff9e3066561574aca73005c5730c6a41f15.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-5e4daac0bb59612c5038448acbcef235e3a.png"/></td>
+    </tr>
+</table>
+
+
+#### 介绍
+魔金微服务多商城商城，基于ruoyi-cloud做后台支撑，前端用uniapp做多端支持
+
+1.文档和源码 链接: https://pan.baidu.com/s/1wxCW93PDa6oel92wORrjTA 提取码: ubs3 复制这段内容后打开百度网盘手机App，操作更方便哦
+2.创建数据库ry-cloud,一共178个表
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0502/130900_a31e0d7b_134431.png "屏幕截图.png")
+3.启动redis，双击启动，默认没有密码
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0502/130913_314e3f9d_134431.png "屏幕截图.png")
+4.启动nginx，在有nginx.exe的目录执行命令 start nginx
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0502/130921_e28ea005_134431.png "屏幕截图.png")
+5.启动nacos,双击startup.cmd，
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0502/130929_02012b2b_134431.png "屏幕截图.png")
+
+如果数据库账号和密码不是root root的需要去修改
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0502/130938_a74518ff_134431.png "屏幕截图.png")
+6.打开nacos网页： http://localhost:8848/nacos  账号和密码都是 nacos
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0502/130945_0fb8b05a_134431.png "屏幕截图.png")
+点击编辑将数据库信息配置改为你自己的
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0502/131000_e28fe739_134431.png "屏幕截图.png")
+
+部署服务，直接双击即可访问
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0502/131008_c0e72e5e_134431.png "屏幕截图.png")
+启动顺序 run-gateway.bat run-auth.bat 之后的服务没有顺序 全部启动即可
+重要服务 
+member会员服务
+Order 订单服务
+Goods 商品服务
+Marketing 营销服务
+Cms 内容服务
+
+7.分别将dist和h5目录放到e盘根目录，也可以去修改nginx的配置
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0502/131016_c0030196_134431.png "屏幕截图.png")
+8.打开后台管理 http://localhost:8098/admin/login 有默认账号和密码
+9.打开h5  http://localhost:8098/ 暂时有跨域问题 访问不了
+10.用微信开发工具 打开applet目录的小程序
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0502/131023_d517758e_134431.png "屏幕截图.png")
